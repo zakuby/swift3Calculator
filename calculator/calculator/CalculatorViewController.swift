@@ -10,8 +10,8 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
-    var numberOnScreen:Double = 0
-    var previousNumber:Double = 0
+    var numberOnScreen:Float = 0
+    var previousNumber:Float = 0
     var perfomingMath = false
     var operation = 0
     var temp:String = ""
@@ -25,14 +25,15 @@ class CalculatorViewController: UIViewController {
         
         if (label.text != "" && sender.tag != 10 && sender.tag != 15) {
             if result_label.text != ""{
-                previousNumber = Double(result_label.text!)!
+                previousNumber = Float(result_label.text!)!
             }else{
-                previousNumber = Double(label.text!)!
+                previousNumber = Float(label.text!)!
+                
             }
             if sender.tag == 11{ //Divide
                 label.text = "/"
             }else if sender.tag == 12 { //Mutiply
-                label.text = "X"
+                label.text = "x"
             }else if sender.tag == 13 { //Minus
                 label.text = "-"
             }else if sender.tag == 14 { //Plus
@@ -64,11 +65,11 @@ class CalculatorViewController: UIViewController {
     @IBAction func numbers(_ sender: UIButton) {
         if perfomingMath == true {
             label.text = String(sender.tag)
-            numberOnScreen = Double(label.text!)!
+            numberOnScreen = Float(sender.tag)
             perfomingMath = false
         }else{
             label.text = label.text! + String(sender.tag)
-            numberOnScreen = Double(label.text!)!
+            numberOnScreen = Float(label.text!)!
         }
         
         
