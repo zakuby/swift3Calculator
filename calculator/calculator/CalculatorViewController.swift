@@ -25,11 +25,19 @@ class CalculatorViewController: UIViewController {
         
         if (label.text != "" && sender.tag != 10 && sender.tag != 15) {
             if result_label.text != ""{
-                previousNumber = Float(result_label.text!)!
-            }else{
-                previousNumber = Float(label.text!)!
+                guard let validNumber = Float(result_label.text!) else {
+                    return
+                }
                 
+                previousNumber = validNumber
+            }else{
+                guard let validNumber = Float(label.text!) else {
+                    return
+                }
+                
+                previousNumber = validNumber
             }
+            
             if sender.tag == 11{ //Divide
                 label.text = "/"
             }else if sender.tag == 12 { //Mutiply
